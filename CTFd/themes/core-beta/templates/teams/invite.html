@@ -3,62 +3,64 @@
 {% block stylesheets %}
 {{ super() }}
 <style>
-  :root {
-    --pokemon-yellow: #ffcc00;
-    --pokemon-blue: #2c6cb3;
-  }
-
-  body {
-    background-color: #1a1a1a;
-    color: #fff;
-  }
-
-  .jumbotron {
-    background-color: transparent !important;
-    border-bottom: 3px solid var(--pokemon-yellow);
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .container h1 {
-    color: var(--pokemon-yellow);
-    text-shadow: 2px 2px 4px var(--pokemon-blue);
-    font-weight: bold;
-  }
-
-  .themed-container {
-    background-color: rgba(44, 108, 179, 0.2);
-    border: 2px solid var(--pokemon-yellow);
-    border-radius: 15px;
-    padding: 2rem;
-  }
-
-  .btn-success {
-    background-color: var(--pokemon-yellow);
-    border-color: var(--pokemon-blue);
-    color: var(--pokemon-blue);
-    font-weight: bold;
-    transition: all 0.3s ease;
-  }
-
-  .btn-success:hover {
-    background-color: var(--pokemon-blue);
-    border-color: var(--pokemon-yellow);
-    color: var(--pokemon-yellow);
-    transform: scale(1.05);
-  }
-
-  a {
-    color: var(--pokemon-yellow);
-  }
-
-  a:hover {
-    color: #fff;
-  }
-
-  .text-muted {
-    color: #ccc !important;
-  }
+    @font-face {
+      font-family: 'PokemonSolid';
+      src: url('/themes/core-beta/static/webfonts/PokemonSolidNormal.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+    body {
+        background: #000000;
+        color: #9e7f56;
+    }
+    
+    .container {
+        background: #03213b;
+        border-radius: 10px;
+        padding: 2rem;
+        margin-top: 2rem;
+        border: 2px solid #9e7f56;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        color: #9e7f56;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 0px #02203a;
+    }
+    
+    .btn-primary {
+        background-color: #9e7f56;
+        border-color: #9e7f56;
+        color: #03213b;
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        text-transform: uppercase;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+        background-color: #b8936b;
+        border-color: #b8936b;
+        color: #03213b;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(158, 127, 86, 0.4);
+    }
+    
+    .alert {
+        border-radius: 8px;
+        border: 2px solid #9e7f56;
+    }
+    
+    .alert-info {
+        background-color: #04223c;
+        border-color: #9e7f56;
+        color: #9e7f56;
+    }
 </style>
 {% endblock %}
 

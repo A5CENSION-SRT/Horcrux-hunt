@@ -1,220 +1,205 @@
 {% extends "base.html" %}
 
+{# ========================================================= #}
+{#    STYLESHEET BLOCK: Contains all page-specific styles    #}
+{# ========================================================= #}
 {% block stylesheets %}
-  {{ super() }}
+  {{ super() }}  {# This includes styles from the base.html template #}
   <style>
-    .teams-container {
-      padding-top: 3rem;
-      padding-bottom: 3rem;
+    @font-face {
+      font-family: 'PokemonSolid';
+      src: url('/themes/core-beta/static/webfonts/PokemonSolidNormal.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
     }
-    .teams-title {
-      color: #ffcc00;
-      text-shadow: 3px 3px 0 #2c6cb3, -1px -1px 0 #2c6cb3, 1px -1px 0 #2c6cb3, -1px 1px 0 #2c6cb3, 1px 1px 0 #2c6cb3;
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2.5rem;
-      font-weight: bold;
+    
+    body {
+        background: #000000;
+        color: #9e7f56;
     }
-    .ash-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 15px;
-      border: 4px solid #ffcc00;
+    
+    .container {
+        background: #03213b;
+        border-radius: 10px;
+        padding: 2rem;
+        margin-top: 2rem;
+        border: 2px solid #9e7f56;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     }
-    .search-form .form-select,
-    .search-form .form-control {
-      background-color: rgba(255, 255, 255, 0.9);
-      border: 3px solid #ffcc00;
-      border-radius: 8px;
-      color: #2c6cb3;
-      font-weight: bold;
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        color: #9e7f56;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 0px #02203a;
     }
-    .search-form .form-select:focus,
-    .search-form .form-control:focus {
-      background-color: white;
-      border-color: #ffcc00;
-      box-shadow: 0 0 0 0.25rem rgba(255, 204, 0, 0.25);
+    
+    .form-control {
+        background-color: #02203a;
+        border: 2px solid #9e7f56;
+        color: #9e7f56;
+        border-radius: 8px;
+        padding: 12px 15px;
+        font-size: 16px;
+        transition: all 0.3s ease;
     }
-    .btn-pokemon-yellow {
-      background-color: #ffcc00;
-      color: #2c6cb3;
-      border: 3px solid #2c6cb3;
-      padding: 0.5rem 1rem;
-      font-size: 1.2rem;
-      border-radius: 30px;
-      font-weight: bold;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 0 #d4a900;
+    
+    .form-control:focus {
+        background-color: #041f3a;
+        border-color: #9e7f56;
+        color: #9e7f56;
+        box-shadow: 0 0 10px rgba(158, 127, 86, 0.3);
     }
-    .btn-pokemon-yellow:hover {
-      background-color: #ffd633;
-      color: #ff0000;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 0 #d4a900;
+    
+    .form-control::placeholder {
+        color: #7a6442;
     }
-    .table-themed {
-      background-color: rgba(44, 108, 179, 0.95);
-      color: #fff;
-      border: 4px solid #ffcc00;
-      border-radius: 15px;
+    
+    .btn-primary, .btn-success {
+        background-color: #9e7f56;
+        border-color: #9e7f56;
+        color: #03213b;
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        text-transform: uppercase;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: all 0.3s ease;
     }
-    .table-themed thead th {
-      color: #ffcc00;
-      border-bottom: 2px solid #ffcc00;
+    
+    .btn-primary:hover, .btn-success:hover {
+        background-color: #b8936b;
+        border-color: #b8936b;
+        color: #03213b;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(158, 127, 86, 0.4);
     }
-    .table-themed tbody tr {
-      border-color: #ffcc00;
+    
+    .form-label {
+        color: #9e7f56;
+        font-weight: bold;
+        margin-bottom: 8px;
     }
-    .table-themed tbody tr:hover {
-      background-color: rgba(60, 120, 190, 0.95);
+    
+    .form-text {
+        color: #b8936b;
     }
-    .table-themed a {
-      color: #ffcc00;
-      font-weight: bold;
+    
+    .background-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
     }
-    .table-themed a:hover {
-      color: #fff;
+    
+    .background-image {
+        width: 100%;
+        height: 100%;
+        background: url('{{ url_for("views.themes", path="img/Banner.png") }}') no-repeat center bottom;
+        background-size: cover;
+        opacity: 0.2;
     }
-    .table-themed .badge.bg-secondary {
-        background-color: #1a3a5f !important;
-        color: #ffcc00;
+    
+    .content-wrapper {
+        position: relative;
+        z-index: 1;
     }
-    .table-themed .badge.bg-primary {
-        background-color: #ffcc00 !important;
-        color: #2c6cb3;
+    
+    .jumbotron {
+        background: linear-gradient(145deg, #03213b 0%, #02203a 100%);
+        color: #9e7f56;
+        padding: 3rem 1rem;
+        border-bottom: 5px solid #9e7f56;
+        margin-bottom: 3rem;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
+    
+    .jumbotron h1 {
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        color: #9e7f56;
+        font-size: 3.5rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        text-shadow: 3px 3px 0px #02203a, 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    
+    .themed-container {
+        background-color: rgba(3, 33, 59, 0.8);
+        border: 2px solid #9e7f56;
+        border-radius: 15px;
+        padding: 2rem;
+    }
+    
+    .themed-container p {
+        color: #9e7f56;
+        line-height: 1.6;
+    }
+
   </style>
 {% endblock %}
 
+
+{# ======================================================= #}
+{#    CONTENT BLOCK: Contains all the page's HTML body     #}
+{# ======================================================= #}
 {% block content %}
-  <div class="container teams-container">
-    <div class="row">
-      <div class="col-md-4 text-center">
-        <img src="{{ url_for('views.themes', path='img/Ash.png') }}" alt="Ash Ketchum" class="ash-image mb-4">
+  <div class="background-container">
+    <div class="background-image"></div>
+  </div>
+  <div class="content-wrapper">
+    <div class="jumbotron">
+      <div class="container">
+        <h1>{% trans %}Create Team{% endtrans %}</h1>
       </div>
-      <div class="col-md-8">
-        <h1 class="teams-title">{% trans %}Teams{% endtrans %}</h1>
+    </div>
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <!-- Charizard on the left -->
+        <div class="col-md-3 d-none d-md-block text-center">
+          <img src="{{ url_for('views.themes', path='img/Charizard.png') }}" alt="Charizard" class="img-fluid" style="max-height: 300px;">
+        </div>
+        
+        <!-- Main content in the center -->
+        <div class="col-md-6">
+          <div class="themed-container">
+            {% include "components/errors.html" %}
 
-        {% if q and field %}
-          <h5 class="text-muted text-center" style="color: #ffcc00 !important;">
-            {% trans %}Searching for teams with <strong>{{ field }}</strong> matching <strong>{{ q }}</strong>{% endtrans %}
-          </h5>
-          <h6 class="text-muted text-center pb-3" style="color: #ffcc00 !important;">
-            {% trans page=teams.page, total=teams.total %}Page {{ page }} of {{ total }} results{% endtrans %}
-          </h6>
-        {% endif %}
+            {% with form = Forms.teams.TeamRegisterForm() %}
+              {% from "macros/forms.html" import render_extra_fields %}
+              <form method="POST">
+                <div class="mb-3">
+                  <b>{{ form.name.label(class="form-label") }}</b>
+                  {{ form.name(class="form-control") }}
+                </div>
+                <div class="mb-3">
+                  <b>{{ form.password.label(class="form-label") }}</b>
+                  {{ form.password(class="form-control") }}
+                </div>
 
-        {% with form = Forms.teams.PublicTeamSearchForm(field=field, q=q) %}
-          <form method="GET" class="row justify-content-around align-items-center search-form">
-            <div class="mb-3 col-md-3">
-              {{ form.field(class="form-select w-100") }}
-            </div>
-            <div class="mb-3 col-md-7">
-              {{ form.q(class="form-control w-100", placeholder="Search for a Team...") }}
-            </div>
-            <div class="mb-3 col-md-2">
-              <button type="submit" class="btn btn-pokemon-yellow w-100">
-                <i class="fas fa-search" aria-hidden="true"></i>
-              </button>
-            </div>
-          </form>
-        {% endwith %}
+                {{ render_extra_fields(form.extra) }}
 
-        <hr style="border-color: #ffcc00;">
-
-        <table class="table table-themed align-middle">
-          <thead>
-          <tr>
-            <th>{% trans %}Team{% endtrans %}</th>
-            <th>{% trans %}Website{% endtrans %}</th>
-            <th class="d-none d-md-table-cell">{% trans %}Affiliation{% endtrans %}</th>
-            <th class="d-none d-md-table-cell">{% trans %}Country{% endtrans %}</th>
-          </tr>
-          </thead>
-          <tbody>
-          {% for team in teams.items %}
-            <tr>
-              <td>
-                {% if scores_visible() %}
-                  <a href="{{ url_for('teams.public', team_id=team.id) }}">{{ team.name | truncate(50) }}</a>
-                {% else %}
-                  <span>{{ team.name | truncate(50) }}</span>
-                {% endif %}
-
-                {% if team.bracket_id %}
-                  <span class="badge bg-secondary ms-2">{{ team.bracket.name }}</span>
-                {% endif %}
-
-                {% if team.oauth_id %}
-                  <a href="https://majorleaguecyber.org/t/{{ team.name }}">
-                    <span class="badge bg-primary ms-2">Official</span>
-                  </a>
-                {% endif %}
-              </td>
-
-              <td class="text-center" style="width: 10px;">
-                {% if team.website and (team.website.startswith('http://') or team.website.startswith('https://')) %}
-                  <a href="{{ team.website }}" target="_blank" rel="noopener">
-                    <i class="fas fa-external-link-alt" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ team.website }}"></i>
-                  </a>
-                {% endif %}
-              </td>
-
-              <td class="d-none d-md-table-cell">
-                {% if team.affiliation %}
-                  {% if team.affiliation | length > 50 %}
-                    <span data-bs-toggle="tooltip" data-bs-placement="top" title="{{ team.affiliation }}">
-                      {{ team.affiliation | truncate(50) }}
-                    </span>
-                  {% else %}
-                    <span>
-                      {{ team.affiliation | truncate(50) }}
-                    </span>
-                  {% endif %}
-                {% endif %}
-              </td>
-              <td class="d-none d-md-table-cell">
-								<span>
-									{% if team.country %}
-										<i class="flag-{{ team.country.lower() }}"></i>
-										{{ lookup_country_code(team.country) }}
-									{% endif %}
-								</span>
-              </td>
-            </tr>
-          {% endfor %}
-          </tbody>
-        </table>
-
-        {% if teams.pages > 1 %}
-          <div class="row">
-            <div class="col-md-12">
-              <div class="text-center">
-                {% trans %}Page{% endtrans %} <br>
-
-                {% if teams.page != 1 %}
-                  <a href="{{ prev_page }}">&lt;&lt;&lt;</a>
-                {% endif %}
-
-                <select class="page-select">
-                  {% for page in range(1, teams.pages + 1) %}
-                    <option {% if teams.page == page %}selected{% endif %}>{{ page }}</option>
-                  {% endfor %}
-                </select>
-
-                {% if teams.next_num %}
-                  <a href="{{ next_page }}">&gt;&gt;&gt;</a>
-                {% endif %}
-              </div>
-            </div>
+                <div class="row ">
+                  <div class="col-md-12">
+                    <p>After creating your team, share the team name and password with your teammates so they can join your
+                      team.</p>
+                    {{ form.submit(class="btn btn-success float-end px-4") }}
+                  </div>
+                </div>
+                {{ form.nonce() }}
+              </form>
+            {% endwith %}
           </div>
-        {% endif %}
+        </div>
+        
+        <!-- Blastoise on the right -->
+        <div class="col-md-3 d-none d-md-block text-center">
+          <img src="{{ url_for('views.themes', path='img/Blastoise.png') }}" alt="Blastoise" class="img-fluid" style="max-height: 300px;">
+        </div>
       </div>
     </div>
   </div>
-{% endblock %}
-
-{% block scripts %}
-  {{ Assets.js("assets/js/teams/list.js") }}
 {% endblock %}

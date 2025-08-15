@@ -1,6 +1,122 @@
 {% extends "base.html" %}
 
 {% block stylesheets %}
+{{ super() }}
+<style>
+    @font-face {
+      font-family: 'PokemonSolid';
+      src: url('/themes/core-beta/static/webfonts/PokemonSolidNormal.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+    body {
+        background: #000000;
+        color: #9e7f56;
+    }
+    
+    .container {
+        background: #03213b;
+        border-radius: 10px;
+        padding: 2rem;
+        margin-top: 2rem;
+        border: 2px solid #9e7f56;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        color: #9e7f56;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 0px #02203a;
+    }
+    
+    .card {
+        background-color: #02203a;
+        border: 2px solid #9e7f56;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .card-header {
+        background-color: #041f3a;
+        border-bottom: 2px solid #9e7f56;
+        color: #9e7f56;
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    
+    .card-body {
+        color: #9e7f56;
+    }
+    
+    .table {
+        color: #9e7f56;
+        background-color: transparent;
+    }
+    
+    .table thead th {
+        border-color: #9e7f56;
+        background-color: #041f3a;
+        color: #9e7f56;
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+    
+    .table tbody td {
+        border-color: #333333;
+        color: #9e7f56;
+    }
+    
+    .table tbody tr:hover {
+        background-color: #041f3a;
+    }
+    
+    .btn-primary {
+        background-color: #9e7f56;
+        border-color: #9e7f56;
+        color: #03213b;
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        text-transform: uppercase;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+        background-color: #b8936b;
+        border-color: #b8936b;
+        color: #03213b;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(158, 127, 86, 0.4);
+    }
+    
+    .btn-danger {
+        background-color: #cd853f;
+        border-color: #cd853f;
+        color: #03213b;
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        text-transform: uppercase;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-danger:hover {
+        background-color: #e5a862;
+        border-color: #e5a862;
+        color: #03213b;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(205, 133, 63, 0.4);
+    }
+</style>
+{% endblock %}
+
+{% block stylesheets %}
   {{ super() }}
   <style>
     .profile-container {

@@ -3,56 +3,75 @@
 {% block stylesheets %}
 {{ super() }}
 <style>
+    @font-face {
+      font-family: 'PokemonSolid';
+      src: url('/themes/core-beta/static/webfonts/PokemonSolidNormal.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
     :root {
-        --pokemon-yellow: #ffcc00;
-        --pokemon-blue: #2c6cb3;
-        --table-bg: rgba(255, 255, 255, 0.9);
-        --table-border: #ffcc00;
-        --table-shadow: rgba(0, 0, 0, 0.2);
-        --gold-medal: #ffd700;
-        --silver-medal: #c0c0c0;
-        --bronze-medal: #cd7f32;
+        --pokemon-bronze: #9e7f56;
+        --pokemon-blue: #03213b;
+        --table-bg: rgba(3, 33, 59, 0.95);
+        --table-border: #333333;
+        --table-shadow: rgba(0, 0, 0, 0.3);
+        --gold-medal: #9e7f56;
+        --silver-medal: #b8936b;
+        --bronze-medal: #cd853f;
+        --text-bronze: #9e7f56;
+        --card-bg: rgba(3, 33, 59, 0.95);
+    }
+
+    body {
+        background-color: #000;
     }
 
     .jumbotron {
-        background-color: var(--pokemon-blue);
-        color: var(--pokemon-yellow);
+        background: linear-gradient(135deg, #03213b 0%, #02203a 100%);
+        color: var(--pokemon-bronze);
         padding: 2rem 1rem;
-        border-bottom: 5px solid var(--pokemon-yellow);
+        border-bottom: 5px solid var(--pokemon-bronze);
         margin-bottom: 2rem;
         border-radius: 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     .jumbotron h1,
     .jumbotron .h1 {
-        font-family: 'Pokemon Solid', sans-serif;
-        font-weight: bold;
-        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        font-weight: normal;
+        text-shadow: 3px 3px 0px #02203a, 2px 2px 4px rgba(0, 0, 0, 0.8);
+        text-transform: uppercase;
     }
 
     .pokemon-font {
-        font-family: 'Pokemon Solid', sans-serif;
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        text-transform: uppercase;
     }
 
     .hall-of-fame-table {
         background: var(--table-bg);
         border-radius: 15px;
         overflow: hidden;
-        box-shadow: 0 4px 8px var(--table-shadow);
+        box-shadow: 0 4px 15px var(--table-shadow);
         border: 4px solid var(--table-border);
     }
 
     .hall-of-fame-table thead th {
         background-color: var(--pokemon-blue);
-        color: var(--pokemon-yellow);
-        font-family: 'Pokemon Solid', sans-serif;
+        color: var(--pokemon-bronze);
+        font-family: 'PokemonSolid', Arial, sans-serif;
         font-size: 1.2rem;
         border-bottom: 4px solid var(--table-border);
+        text-transform: uppercase;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
         text-align: center;
     }
 
     .hall-of-fame-table tbody tr {
-        border-bottom: 1px solid #dee2e6;
+        border-bottom: 1px solid #333333;
+        color: var(--text-bronze);
     }
 
     .hall-of-fame-table tbody tr:last-child {
@@ -60,7 +79,15 @@
     }
 
     .hall-of-fame-table tbody tr:hover {
-        background-color: rgba(255, 204, 0, 0.2);
+        background-color: rgba(158, 127, 86, 0.2);
+    }
+
+    .hall-of-fame-table tbody td {
+        color: var(--text-bronze);
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
     }
 
     .hall-of-fame-table .rank-col { width: 10%; }
@@ -77,8 +104,9 @@
     .rank-3 { color: var(--bronze-medal); }
 
     .current-user {
-        background-color: rgba(44, 108, 179, 0.3) !important;
+        background-color: rgba(2, 32, 58, 0.5) !important;
         font-weight: bold;
+        border: 2px solid var(--pokemon-bronze);
     }
 </style>
 {% endblock %}

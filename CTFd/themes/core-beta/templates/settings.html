@@ -4,18 +4,26 @@
 {% block stylesheets %}
 {{ super() }}
 <style>
+    @font-face {
+      font-family: 'PokemonSolid';
+      src: url('/themes/core-beta/static/webfonts/PokemonSolidNormal.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
     :root {
-        --bg-dark-start: #0d1117;
-        --bg-dark-end: #010409;
-        --surface-dark: #161b22;
-        --surface-elevated: #21262d;
-        --text-primary: #e6edf3;
-        --text-secondary: #8b949e;
-        --accent-yellow: #ffd733;
-        --accent-blue: #3B4CCA;
-        --accent-red: #E3350D;
-        --card-border: #30363d;
+        --bg-dark-start: #000;
+        --bg-dark-end: #000;
+        --surface-dark: #03213b;
+        --surface-elevated: #02203a;
+        --text-primary: #9e7f56;
+        --text-secondary: #b8936b;
+        --accent-bronze: #9e7f56;
+        --accent-blue: #03213b;
+        --accent-red: #cd853f;
+        --card-border: #333333;
         --card-shadow: rgba(0, 0, 0, 0.4);
+        --card-bg: rgba(3, 33, 59, 0.95);
     }
 
     body {
@@ -24,10 +32,10 @@
     }
 
     .jumbotron {
-        background: linear-gradient(145deg, var(--accent-blue) 0%, #1a2a6c 100%);
-        color: var(--accent-yellow);
+        background: linear-gradient(145deg, var(--accent-blue) 0%, #02203a 100%);
+        color: var(--accent-bronze);
         padding: 3rem 1rem;
-        border-bottom: 5px solid var(--accent-yellow);
+        border-bottom: 5px solid var(--accent-bronze);
         margin-bottom: 3rem;
         text-align: center;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
@@ -35,10 +43,12 @@
     }
 
     .jumbotron h1 {
-        font-family: 'Pokemon Solid', sans-serif;
-        color: var(--accent-yellow);
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        color: var(--accent-bronze);
         font-size: 3.5rem;
-        text-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-blue);
+        font-weight: normal;
+        text-transform: uppercase;
+        text-shadow: 3px 3px 0px #02203a, 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
 
     .pokemon-sprite {
@@ -85,30 +95,51 @@
     }
 
     .form-control, .form-select {
-        background: var(--surface-elevated);
-        border: 2px solid var(--card-border);
-        color: var(--text-primary);
+        background: rgba(255, 255, 255, 0.9);
+        border: 3px solid var(--card-border);
+        color: var(--accent-blue);
         border-radius: 8px;
+        font-weight: bold;
     }
 
     .form-control:focus, .form-select:focus {
-        border-color: var(--accent-blue);
-        box-shadow: 0 0 10px rgba(59, 76, 202, 0.5);
+        border-color: var(--accent-bronze);
+        box-shadow: 0 0 0 0.25rem rgba(158, 127, 86, 0.25);
         outline: none;
+        background-color: white;
     }
 
-    .btn-primary {
-        background-color: var(--accent-yellow);
-        color: var(--accent-blue);
-        border: 2px solid var(--accent-blue);
-        font-family: 'Press Start 2P', cursive;
+    .form-label {
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        font-weight: normal;
+        color: var(--accent-bronze);
+        font-size: 1.1rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
         text-transform: uppercase;
     }
 
+    .btn-primary {
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        background-color: var(--accent-bronze);
+        color: var(--accent-blue);
+        border: 3px solid var(--card-border);
+        padding: 0.8rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 30px;
+        font-weight: normal;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 0 #02203a;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    }
+
     .btn-primary:hover {
-        background-color: #ffd633;
-        border-color: var(--accent-red);
-        color: var(--accent-red);
+        background-color: var(--text-secondary);
+        border-color: var(--card-border);
+        color: var(--accent-blue);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 0 #02203a;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);
     }
 
 </style>

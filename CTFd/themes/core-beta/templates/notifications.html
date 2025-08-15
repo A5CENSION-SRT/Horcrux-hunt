@@ -3,21 +3,33 @@
 {% block stylesheets %}
 {{ super() }}
 <style>
+    @font-face {
+      font-family: 'PokemonSolid';
+      src: url('/themes/core-beta/static/webfonts/PokemonSolidNormal.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
     :root {
-        --pokemon-yellow: #ffcc00;
-        --pokemon-blue: #3B4CCA;
-        --card-bg: rgba(30, 30, 35, 0.95);
-        --card-border: #3B4CCA;
+        --pokemon-bronze: #9e7f56;
+        --pokemon-blue: #03213b;
+        --card-bg: rgba(3, 33, 59, 0.95);
+        --card-border: #333333;
         --card-shadow: rgba(0, 0, 0, 0.3);
-        --text-primary: #e6e6e6;
-        --text-secondary: #a0a0a0;
+        --text-primary: #9e7f56;
+        --text-secondary: #b8936b;
+        --overlay-bg: rgba(4, 31, 58, 0.3);
+    }
+
+    body {
+        background-color: #000;
     }
 
     .jumbotron {
-        background: linear-gradient(135deg, #1a2a6c 0%, #3B4CCA 100%);
-        color: var(--pokemon-yellow);
+        background: linear-gradient(135deg, #03213b 0%, #02203a 100%);
+        color: var(--pokemon-bronze);
         padding: 2rem 1rem;
-        border-bottom: 5px solid var(--pokemon-yellow);
+        border-bottom: 5px solid var(--pokemon-bronze);
         margin-bottom: 2rem;
         border-radius: 0;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -25,13 +37,15 @@
 
     .jumbotron h1,
     .jumbotron .h1 {
-        font-family: 'Pokemon Solid', sans-serif;
-        font-weight: bold;
-        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        font-weight: normal;
+        text-shadow: 3px 3px 0px #02203a, 2px 2px 4px rgba(0, 0, 0, 0.8);
+        text-transform: uppercase;
     }
 
     .pokemon-font {
-        font-family: 'Pokemon Solid', sans-serif;
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        text-transform: uppercase;
     }
 
     .oak-message-card {
@@ -90,15 +104,15 @@
 {% block content %}
 <div class="jumbotron">
     <div class="container">
-        <h1 class="pokemon-font">Professor Oak's Messages</h1>
-        <p class="lead">Important updates from the lab!</p>
+        <h1 class="pokemon-font">Dumbledore’s Dispatches</h1>
+        <p class="lead">Urgent Notices from the Headmaster’s Study!</p>
     </div>
 </div>
 <div class="container">
     {% if not notifications %}
     <div class="text-center py-5">
         <h2 class="pokemon-font" style="color: var(--pokemon-yellow);">No new messages!</h2>
-        <p class="lead" style="color: var(--text-secondary);">The Professor is busy with his research. Check back later!</p>
+        <p class="lead" style="color: var(--text-secondary);">Professor Dumbledore is deep in important magical study. Best try again later.</p>
     </div>
     {% endif %}
     {% for notification in notifications %}

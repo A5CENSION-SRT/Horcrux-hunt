@@ -1,21 +1,35 @@
-<style>
+{% extends "base.html" %}
+
+{# ========================================================= #}
+{#    STYLESHEET BLOCK: Contains all page-specific styles    #}
+{# ========================================================= #}
+{% block stylesheets %}
+  {{ super() }}
+  <style>
+    @font-face {
+      font-family: 'PokemonSolid';
+      src: url('/themes/core-beta/static/webfonts/PokemonSolidNormal.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
     :root {
-        --surface-dark: #161b22;
-        --surface-elevated: #21262d;
-        --text-primary: #e6edf3;
-        --text-secondary: #8b949e;
-        --accent-yellow: #ffd733;
-        --accent-blue: #3B4CCA;
-        --accent-red: #E3350D;
-        --border-color: #30363d;
-        --success-glow: rgba(31, 136, 61, 0.6);
-        --danger-glow: rgba(248, 81, 73, 0.6);
+        --surface-dark: #03213b;
+        --surface-elevated: #02203a;
+        --text-primary: #9e7f56;
+        --text-secondary: #b8936b;
+        --accent-bronze: #9e7f56;
+        --accent-blue: #03213b;
+        --accent-red: #cd853f;
+        --border-color: #333333;
+        --success-glow: rgba(158, 127, 86, 0.6);
+        --danger-glow: rgba(205, 133, 63, 0.6);
     }
 
     .modal-content {
         background: var(--surface-dark);
         color: var(--text-primary);
-        border: 2px solid var(--border-color);
+        border: 2px solid var(--accent-bronze);
         border-radius: 16px;
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
     }
@@ -25,7 +39,7 @@
     }
 
     .nav-tabs {
-        border-bottom: 2px solid var(--border-color);
+        border-bottom: 2px solid var(--accent-bronze);
         padding: 0 0.5rem;
     }
     .nav-tabs .nav-link {
@@ -35,35 +49,40 @@
         padding: 0.75rem 1rem;
         font-weight: 600;
         transition: color 0.2s ease;
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        text-transform: uppercase;
     }
     .nav-tabs .nav-link.active {
-        color: var(--accent-yellow);
+        color: var(--accent-bronze);
         background: transparent;
-        border-bottom: 3px solid var(--accent-yellow);
+        border-bottom: 3px solid var(--accent-bronze);
     }
     .nav-tabs .nav-link:hover {
         color: var(--text-primary);
     }
 
     .challenge-name {
-        font-family: 'Pokemon Solid', sans-serif;
-        color: var(--accent-yellow);
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        color: var(--accent-bronze);
         font-size: 2.2rem;
-        text-shadow: 0 0 8px rgba(0,0,0,0.7);
+        text-shadow: 3px 3px 0px #02203a, 2px 2px 4px rgba(0, 0, 0, 0.8);
+        text-transform: uppercase;
     }
     .challenge-value {
-        font-family: 'Pokemon Solid', sans-serif;
-        color: var(--accent-red);
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        color: var(--accent-bronze);
         font-size: 1.5rem;
         margin-top: -0.5rem;
     }
     .challenge-tag {
         background-color: var(--accent-blue);
-        color: var(--text-primary);
+        color: var(--accent-bronze);
         border-radius: 15px;
         padding: 0.3rem 0.8rem;
         font-size: 0.8rem;
         font-weight: 600;
+        text-transform: uppercase;
+        border: 1px solid var(--accent-bronze);
     }
 
     .challenge-desc {
@@ -74,7 +93,7 @@
 
     .challenge-input {
         background: var(--surface-elevated);
-        border: 2px solid var(--border-color);
+        border: 2px solid var(--accent-bronze);
         color: var(--text-primary);
         border-radius: 8px;
         padding: 0.75rem 1rem;
@@ -82,44 +101,45 @@
         transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .challenge-input:focus {
-        border-color: var(--accent-blue);
-        box-shadow: 0 0 10px rgba(59, 76, 202, 0.5);
+        border-color: var(--accent-bronze);
+        box-shadow: 0 0 10px rgba(158, 127, 86, 0.5);
         outline: none;
+        background: #041f3a;
     }
 
     .btn-pokemon-yellow {
-        background-color: #ffcc00;
-        color: #2c6cb3;
-        border: 3px solid #2c6cb3;
+        background-color: var(--accent-bronze);
+        color: var(--accent-blue);
+        border: 3px solid var(--accent-blue);
         padding: 0.5rem 1.5rem;
         font-size: 1.2rem;
         border-radius: 30px;
         font-weight: bold;
         text-transform: uppercase;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 0 #d4a900;
-        font-family: 'Press Start 2P', cursive;
+        box-shadow: 0 4px 0 #7a6442;
+        font-family: 'PokemonSolid', Arial, sans-serif;
         text-decoration: none;
         cursor: pointer;
     }
     
     .btn-pokemon-yellow:hover {
-        background-color: #ffd633;
-        color: var(--accent-red) !important;
-        border-color: var(--accent-red);
+        background-color: #b8936b;
+        color: var(--accent-blue) !important;
+        border-color: var(--accent-blue);
         transform: translateY(-2px);
-        box-shadow: 0 6px 0 #d4a900;
+        box-shadow: 0 6px 0 #7a6442;
     }
     
     .btn-pokemon-yellow:active {
         transform: translateY(2px);
-        box-shadow: 0 2px 0 #d4a900;
+        box-shadow: 0 2px 0 #7a6442;
     }
 
     /* Hints */
     details {
         background: var(--surface-elevated);
-        border: 1px solid var(--border-color);
+        border: 1px solid var(--accent-bronze);
         border-radius: 8px;
         margin-bottom: 0.5rem;
     }
@@ -131,6 +151,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        color: var(--accent-bronze);
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        text-transform: uppercase;
     }
     summary::-webkit-details-marker { display: none; }
     summary:after {
@@ -146,9 +169,14 @@
         border-top: 1px solid var(--border-color);
         margin-top: 0.5rem;
     }
+  </style>
+{% endblock %}
 
 
-</style>
+{# ======================================================= #}
+{#    CONTENT BLOCK: Contains all the page's HTML body     #}
+{# ======================================================= #}
+{% block content %}
 <div :class="getStyles()" role="document" x-data="Challenge" x-init="id = {{ challenge.id }}; max_attempts = {{ max_attempts }}; attempts = {{ attempts }}">
   <div class="modal-content">
     <div class="modal-body py-4 px-4 px-sm-5">
@@ -380,3 +408,4 @@
     </div>
   </div>
 </div>
+{% endblock %}
