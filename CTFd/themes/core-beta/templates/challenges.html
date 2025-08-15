@@ -81,6 +81,7 @@
         overflow: hidden;
         box-shadow: 0 4px 10px var(--card-shadow);
         color: var(--text-primary);
+        height: 250px;
     }
 
     .challenge-card:hover {
@@ -157,6 +158,121 @@
 
     .challenge-solved:hover .pokeball-icon {
         animation: pokeball-wobble 0.8s ease-in-out;
+    }
+
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+        .jumbotron {
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .jumbotron h1 {
+            font-size: 2.5rem;
+        }
+        
+        .jumbotron p {
+            font-size: 1rem;
+        }
+        
+        .category-header h3 {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .challenge-card {
+            height: 220px;
+            margin-bottom: 1rem;
+        }
+        
+        .challenge-inner {
+            padding: 1rem;
+        }
+        
+        .challenge-card-title {
+            font-size: 1.2rem;
+        }
+        
+        .challenge-card-cp {
+            font-size: 1rem;
+        }
+        
+        .pokemon-sprite {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .solved-overlay {
+            font-size: 1.4rem;
+        }
+        
+        .pokeball-icon {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .jumbotron {
+            padding: 1.5rem 0.5rem;
+        }
+        
+        .jumbotron h1 {
+            font-size: 2rem;
+        }
+        
+        .jumbotron p {
+            font-size: 0.9rem;
+        }
+        
+        .category-header h3 {
+            font-size: 1.3rem;
+        }
+        
+        .challenge-card {
+            height: 200px;
+        }
+        
+        .challenge-inner {
+            padding: 0.8rem;
+        }
+        
+        .challenge-card-title {
+            font-size: 1.1rem;
+        }
+        
+        .challenge-card-cp {
+            font-size: 0.9rem;
+        }
+        
+        .pokemon-sprite {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .solved-overlay {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+        
+        .pokeball-icon {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .container {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        
+        .pt-5 {
+            padding-top: 2rem !important;
+        }
     }
   </style>
 {% endblock %}

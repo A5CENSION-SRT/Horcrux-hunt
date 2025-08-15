@@ -4,7 +4,7 @@
 {#    STYLESHEET BLOCK: Contains all page-specific styles    #}
 {# ========================================================= #}
 {% block stylesheets %}
-  {{ super() }}  {# This includes styles from the base.html template #}
+  {{ super() }}
   <style>
     @font-face {
       font-family: 'PokemonSolid';
@@ -14,129 +14,156 @@
     }
     
     body {
-        background: #000000;
-        color: #9e7f56;
+        background-color: #000;
     }
     
-    .container {
-        background: #03213b;
-        border-radius: 10px;
-        padding: 2rem;
-        margin-top: 2rem;
-        border: 2px solid #9e7f56;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    .team-hero {
+      background: url('{{ url_for("views.themes", path="img/Banner.png") }}') no-repeat center top fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 15px;
+      background-position: center top;
     }
     
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'PokemonSolid', Arial, sans-serif;
-        color: #9e7f56;
-        text-transform: uppercase;
-        text-shadow: 2px 2px 0px #02203a;
+    .team-container {
+      background: transparent;
+      border-radius: 0;
+      padding: 2rem 3rem;
+      box-shadow: none;
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      border: none;
+      position: relative;
+      z-index: 2;
     }
     
-    .form-control {
-        background-color: #02203a;
-        border: 2px solid #9e7f56;
-        color: #9e7f56;
-        border-radius: 8px;
-        padding: 12px 15px;
-        font-size: 16px;
-        transition: all 0.3s ease;
+    .team-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(4, 31, 58, 0.3);
+      z-index: 1;
     }
     
-    .form-control:focus {
-        background-color: #041f3a;
-        border-color: #9e7f56;
-        color: #9e7f56;
-        box-shadow: 0 0 10px rgba(158, 127, 86, 0.3);
-    }
-    
-    .form-control::placeholder {
-        color: #7a6442;
-    }
-    
-    .btn-primary, .btn-success {
-        background-color: #9e7f56;
-        border-color: #9e7f56;
-        color: #03213b;
-        font-family: 'PokemonSolid', Arial, sans-serif;
-        text-transform: uppercase;
-        padding: 12px 30px;
-        border-radius: 25px;
-        font-weight: bold;
-        transition: all 0.3s ease;
-    }
-    
-    .btn-primary:hover, .btn-success:hover {
-        background-color: #b8936b;
-        border-color: #b8936b;
-        color: #03213b;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(158, 127, 86, 0.4);
+    .team-title {
+      font-family: 'PokemonSolid', Arial, sans-serif;
+      color: #9e7f56;
+      text-shadow: 3px 3px 0 #02203a, -1px -1px 0 #02203a, 1px -1px 0 #02203a, -1px 1px 0 #02203a, 1px 1px 0 #02203a, 2px 2px 4px rgba(0, 0, 0, 0.8);
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      font-weight: normal;
+      text-transform: uppercase;
     }
     
     .form-label {
-        color: #9e7f56;
-        font-weight: bold;
-        margin-bottom: 8px;
+      font-family: 'PokemonSolid', Arial, sans-serif;
+      font-weight: normal;
+      color: #9e7f56;
+      font-size: 1.1rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+      text-transform: uppercase;
+    }
+    
+    .form-control, 
+    .form-control:focus, 
+    .form-control:active,
+    .form-control:focus-visible {
+      background-color: rgba(255, 255, 255, 0.9) !important;
+      border: 3px solid #333333 !important;
+      border-radius: 8px !important;
+      color: #03213b !important;
+      font-weight: bold !important;
+      box-shadow: none !important;
+    }
+    
+    .form-control:focus {
+      background-color: white !important;
+      border-color: #04223c !important;
+      box-shadow: 0 0 0 0.25rem rgba(4, 34, 60, 0.25) !important;
+    }
+    
+    .btn-pokemon-yellow, .btn-success {
+      font-family: 'PokemonSolid', Arial, sans-serif;
+      background-color: #9e7f56;
+      color: #03213b;
+      border: 3px solid #333333;
+      padding: 0.8rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      font-weight: normal;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 0 #02203a;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    }
+    
+    .btn-pokemon-yellow:hover, .btn-success:hover {
+      background-color: #b8936b;
+      color: #041f3a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #02203a;
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);
     }
     
     .form-text {
-        color: #b8936b;
+      font-family: 'PokemonSolid', Arial, sans-serif;
+      font-size: 0.9rem;
+      color: #9e7f56 !important;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+      text-transform: uppercase;
     }
     
-    .background-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        overflow: hidden;
+    /* Mobile-friendly Pokemon images */
+    .pokemon-image {
+      max-width: 100%;
+      height: auto;
+      max-height: 200px;
+      margin: 1rem 0;
     }
     
-    .background-image {
-        width: 100%;
-        height: 100%;
-        background: url('{{ url_for("views.themes", path="img/Banner.png") }}') no-repeat center bottom;
-        background-size: cover;
-        opacity: 0.2;
-    }
-    
-    .content-wrapper {
-        position: relative;
-        z-index: 1;
-    }
-    
-    .jumbotron {
-        background: linear-gradient(145deg, #03213b 0%, #02203a 100%);
-        color: #9e7f56;
-        padding: 3rem 1rem;
-        border-bottom: 5px solid #9e7f56;
-        margin-bottom: 3rem;
+    /* Show smaller images on mobile */
+    @media (max-width: 768px) {
+      .pokemon-image {
+        max-height: 120px;
+        margin: 0.5rem 0;
+      }
+      
+      .team-container {
+        padding: 1.5rem 2rem;
+        margin: 1rem;
+      }
+      
+      .team-title {
+        font-size: 2rem;
+      }
+      
+      .pokemon-container {
         text-align: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        margin-bottom: 1rem;
+      }
     }
     
-    .jumbotron h1 {
-        font-family: 'PokemonSolid', Arial, sans-serif;
-        color: #9e7f56;
-        font-size: 3.5rem;
-        font-weight: normal;
-        text-transform: uppercase;
-        text-shadow: 3px 3px 0px #02203a, 2px 2px 4px rgba(0, 0, 0, 0.8);
-    }
-    
-    .themed-container {
-        background-color: rgba(3, 33, 59, 0.8);
-        border: 2px solid #9e7f56;
-        border-radius: 15px;
-        padding: 2rem;
-    }
-    
-    .themed-container p {
-        color: #9e7f56;
-        line-height: 1.6;
+    /* Show Pokemon on mobile as well but smaller */
+    @media (max-width: 576px) {
+      .pokemon-image {
+        max-height: 80px;
+      }
+      
+      .team-container {
+        padding: 1rem 1.5rem;
+      }
+      
+      .team-title {
+        font-size: 1.8rem;
+      }
     }
 
   </style>
@@ -147,59 +174,65 @@
 {#    CONTENT BLOCK: Contains all the page's HTML body     #}
 {# ======================================================= #}
 {% block content %}
-  <div class="background-container">
-    <div class="background-image"></div>
-  </div>
-  <div class="content-wrapper">
-    <div class="jumbotron">
-      <div class="container">
-        <h1>{% trans %}Create Team{% endtrans %}</h1>
+<div class="team-hero">
+  <div class="team-container">
+    <h1 class="team-title">
+      {% trans %}Create Team{% endtrans %}
+    </h1>
+    
+    <!-- Mobile-friendly Pokemon images -->
+    <div class="row d-block d-md-none">
+      <div class="col-12 pokemon-container">
+        <img src="{{ url_for('views.themes', path='img/Charizard.png') }}" alt="Charizard" class="pokemon-image me-3">
+        <img src="{{ url_for('views.themes', path='img/Blastoise.png') }}" alt="Blastoise" class="pokemon-image">
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="row align-items-center">
-        <!-- Charizard on the left -->
-        <div class="col-md-3 d-none d-md-block text-center">
-          <img src="{{ url_for('views.themes', path='img/Charizard.png') }}" alt="Charizard" class="img-fluid" style="max-height: 300px;">
-        </div>
-        
-        <!-- Main content in the center -->
-        <div class="col-md-6">
-          <div class="themed-container">
-            {% include "components/errors.html" %}
+    
+    <div class="row align-items-center">
+      <!-- Charizard on the left (desktop only) -->
+      <div class="col-md-3 d-none d-md-block text-center">
+        <img src="{{ url_for('views.themes', path='img/Charizard.png') }}" alt="Charizard" class="pokemon-image">
+      </div>
+      
+      <!-- Main content -->
+      <div class="col-md-6 col-12">
+        {% include "components/errors.html" %}
 
-            {% with form = Forms.teams.TeamRegisterForm() %}
-              {% from "macros/forms.html" import render_extra_fields %}
-              <form method="POST">
-                <div class="mb-3">
-                  <b>{{ form.name.label(class="form-label") }}</b>
-                  {{ form.name(class="form-control") }}
-                </div>
-                <div class="mb-3">
-                  <b>{{ form.password.label(class="form-label") }}</b>
-                  {{ form.password(class="form-control") }}
-                </div>
+        {% with form = Forms.teams.TeamRegisterForm() %}
+          {% from "macros/forms.html" import render_extra_fields %}
+          <form method="post" accept-charset="utf-8" role="form">
+            <div class="mb-3">
+              <b>{{ form.name.label(class="form-label") }}</b>
+              {{ form.name(class="form-control", autocomplete="organization") }}
+              <small class="form-text">{% trans %}Your team's unique name{% endtrans %}</small>
+            </div>
 
-                {{ render_extra_fields(form.extra) }}
+            <div class="mb-3">
+              <b>{{ form.password.label(class="form-label") }}</b>
+              {{ form.password(class="form-control", autocomplete="new-password") }}
+              <small class="form-text">{% trans %}Password for teammates to join{% endtrans %}</small>
+            </div>
 
-                <div class="row ">
-                  <div class="col-md-12">
-                    <p>After creating your team, share the team name and password with your teammates so they can join your
-                      team.</p>
-                    {{ form.submit(class="btn btn-success float-end px-4") }}
-                  </div>
-                </div>
-                {{ form.nonce() }}
-              </form>
-            {% endwith %}
-          </div>
-        </div>
-        
-        <!-- Blastoise on the right -->
-        <div class="col-md-3 d-none d-md-block text-center">
-          <img src="{{ url_for('views.themes', path='img/Blastoise.png') }}" alt="Blastoise" class="img-fluid" style="max-height: 300px;">
-        </div>
+            {{ form.nonce() }}
+            {{ render_extra_fields(form.extra) }}
+
+            <div class="row pt-3">
+              <div class="col-12">
+                <p class="form-text mb-3">
+                  {% trans %}After creating your team, share the team name and password with your teammates so they can join your team.{% endtrans %}
+                </p>
+                {{ form.submit(class="btn btn-pokemon-yellow w-100", value='Create Team') }}
+              </div>
+            </div>
+          </form>
+        {% endwith %}
+      </div>
+      
+      <!-- Blastoise on the right (desktop only) -->
+      <div class="col-md-3 d-none d-md-block text-center">
+        <img src="{{ url_for('views.themes', path='img/Blastoise.png') }}" alt="Blastoise" class="pokemon-image">
       </div>
     </div>
   </div>
+</div>
 {% endblock %}

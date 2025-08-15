@@ -4,38 +4,58 @@
     {{ Assets.css("assets/scss/main.scss") }}
     <style>
         @font-face {
-            font-family: 'Pokemon Solid';
-            src: local('Pokemon Solid'),
-                 local('PokemonSolid'),
-                 local('PokemonSolidNormal');
+            font-family: 'PokemonSolid';
+            src: url('/themes/core-beta/static/webfonts/PokemonSolidNormal.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
-            font-display: swap;
         }
         
-        .pokemon-hero {
-            background: url('{{ url_for("views.themes", path="img/Banner.png") }}') no-repeat center bottom / cover;
-            background-position: center bottom;
-            min-height: 100vh;
-            max-height: 100vh;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 10vh;
+        body {
+            background-color: #000;
         }
-        .pokemon-hero .container {
+        
+        .index-hero {
+            background: url('{{ url_for("views.themes", path="img/Banner.png") }}') no-repeat center top fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 15px;
+            background-position: center ;
+            position: relative;
+        }
+        
+        .index-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(4, 31, 58, 0.3);
+            z-index: 1;
+        }
+        
+        .index-container {
+            background: transparent;
+            border-radius: 0;
+            padding: 2rem 3rem;
+            box-shadow: none;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            border: none;
             position: relative;
             z-index: 2;
-            padding: 0;
-            margin-top: -5vh;
+            text-align: center;
         }
+        
         .logo-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 auto;
+            margin: 0 auto 2rem;
             max-width: 600px;
         }
         
@@ -51,99 +71,74 @@
             z-index: 5;
             width: auto;
         }
+        
         .hero-logo-left {
             top: 30px;
             left: 40px;
             max-height: 120px;
         }
+        
         .hero-logo-right {
             top: 30px;
             right: 40px;
             max-height: 100px;
         }
         
-        @media (max-width: 768px) {
-            .hero-logo-left, .hero-logo-right {
-                max-height: 70px;
-                top: 20px;
-            }
-            .hero-logo-left {
-                left: 20px;
-            }
-            .hero-logo-right {
-                right: 20px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .pokemon-title {
-                font-size: 4rem;
-            }
-        }
         .pokemon-subtitle {
-            font-family: Arial, sans-serif;
+            font-family: 'PokemonSolid', Arial, sans-serif;
             font-size: 1.8rem;
-            color: #ffcc00;
+            color: #9e7f56;
             margin: 0 0 2rem 0;
             padding: 0;
-            text-shadow: 
-                -1px -1px 0 #2c6cb3,  
-                 1px -1px 0 #2c6cb3,
-                -1px  1px 0 #2c6cb3,
-                 1px  1px 0 #2c6cb3,
-                 0   0 8px #2c6cb3; /* Optional: Adds a glow effect */
+            text-shadow: 3px 3px 0 #02203a, -1px -1px 0 #02203a, 1px -1px 0 #02203a, -1px 1px 0 #02203a, 1px 1px 0 #02203a, 2px 2px 4px rgba(0, 0, 0, 0.8);
             position: relative;
             z-index: 10;
             text-align: center;
             line-height: 1.4;
-            font-weight: bold;
-            display: inline-block;
-            background: none;
+            font-weight: normal;
+            text-transform: uppercase;
         }
         
-
-        
-        @media (max-width: 768px) {
-            .pokemon-subtitle {
-                font-size: 1.4rem;
-                padding: 8px 15px;
-            }
-            
-            .navbar-dark .navbar-nav .nav-link {
-                margin: 2px 0;
-                text-align: center;
-            }
+        .lead {
+            font-family: 'PokemonSolid', Arial, sans-serif;
+            color: #9e7f56 !important;
+            font-size: 1.2rem !important;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+            text-transform: uppercase;
+            line-height: 1.5;
         }
         
         .btn-pokemon-yellow {
-            background-color: #ffcc00;
-            color: #2c6cb3;
-            border: 3px solid #2c6cb3;
-            padding: 0.5rem 1.5rem;
+            font-family: 'PokemonSolid', Arial, sans-serif;
+            background-color: #9e7f56;
+            color: #03213b;
+            border: 3px solid #333333;
+            padding: 0.8rem 2rem;
             font-size: 1.2rem;
             border-radius: 30px;
-            font-weight: bold;
+            font-weight: normal;
             text-transform: uppercase;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 0 #d4a900;
-            font-family: inherit;
+            box-shadow: 0 4px 0 #02203a;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+            min-width: 200px;
         }
         
         .btn-pokemon-yellow:hover {
-            background-color: #ffd633;
-            color: #ff0000;
-            border-color: #ff0000;
+            background-color: #b8936b;
+            color: #041f3a;
             transform: translateY(-2px);
-            box-shadow: 0 6px 0 #d4a900;
+            box-shadow: 0 6px 0 #02203a;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);
         }
         
         .btn-pokemon-yellow:active {
             transform: translateY(2px);
-            box-shadow: 0 2px 0 #d4a900;
+            box-shadow: 0 2px 0 #02203a;
         }
         
         .pikachu-image {
-            max-width: 350px;
+            max-width: 250px;
             margin: 2rem auto 0;
             display: block;
             position: relative;
@@ -155,87 +150,124 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-        .pokemon-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border: 4px solid #ffcc00;
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .index-container {
+                padding: 1.5rem 2rem;
+                margin: 1rem;
+            }
+            
+            .hero-logo-left, .hero-logo-right {
+                max-height: 70px;
+                top: 20px;
+            }
+            
+            .hero-logo-left {
+                left: 20px;
+            }
+            
+            .hero-logo-right {
+                right: 20px;
+            }
+            
+            .pokemon-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .lead {
+                font-size: 1rem !important;
+            }
+            
+            .hackemon-logo {
+                max-height: 150px;
+            }
+            
+            .pikachu-image {
+                max-width: 180px;
+                margin: 1.5rem auto 0;
+            }
+            
+            .btn-pokemon-yellow {
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
+                min-width: 180px;
+            }
         }
-        .pokemon-type {
-            display: inline-block;
-            padding: 0.25rem 1rem;
-            border-radius: 15px;
-            color: white;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            margin: 0.2rem;
-        }
-        .btn-pokemon {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.8rem;
-            padding: 0.5rem 1.5rem;
-            margin: 0.5rem;
-            border: none;
-            border-radius: 20px;
-            color: white;
-            text-transform: uppercase;
-            transition: all 0.3s;
-        }
-        .btn-pokemon:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .btn-pokemon-blue {
-            background-color: #2c6cb3;
-        }
-        .btn-pokemon-red {
-            background-color: #e74c3c;
-        }
-        .pokemon-feature {
-            text-align: center;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .pokemon-feature i {
-            font-size: 2.5rem;
-            color: #2c6cb3;
-            margin-bottom: 1rem;
+        
+        @media (max-width: 576px) {
+            .index-container {
+                padding: 1rem 1.5rem;
+            }
+            
+            .hero-logo-left, .hero-logo-right {
+                max-height: 50px;
+                top: 15px;
+            }
+            
+            .hero-logo-left {
+                left: 15px;
+            }
+            
+            .hero-logo-right {
+                right: 15px;
+            }
+            
+            .pokemon-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hackemon-logo {
+                max-height: 120px;
+            }
+            
+            .pikachu-image {
+                max-width: 150px;
+                margin: 1rem auto 0;
+            }
+            
+            .btn-pokemon-yellow {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+                min-width: 160px;
+            }
         }
     </style>
 {% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="pokemon-hero">
+<section class="index-hero">
     <img src="{{ url_for('views.themes', path='img/CCLogo_BG_Removed.png') }}" alt="CC Logo" class="hero-logo-left">
     <img src="{{ url_for('views.themes', path='img/RVCE_Logo_With_Text.png') }}" alt="RVCE Logo" class="hero-logo-right">
-    <div class="container text-center">
+    
+    <div class="index-container">
         <div class="logo-container mb-4">
             <img src="{{ url_for('views.themes', path='img/Hackemon_Logo.png') }}" alt="HACKeMON" class="hackemon-logo">
         </div>
+        
         <p class="pokemon-subtitle">Gotta Hack 'Em All!</p>
+        
         <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <p class="lead text-white mb-4" style="font-size: 1.5rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">
-                    Embark on an epic cybersecurity journey! Battle through challenges, defeat Gym Leaders, and become the ultimate HACKAMON Master!
+            <div class="col-lg-10">
+                <p class="lead mb-4">
+                    Embark on a magical quest through the enchanted realms of cybersecurity! Face cunning trials, outwit dark wizards of the web, and claim your place as the ultimate Wizarding Codebreaker!
                 </p>
                 
-                <div class="d-flex justify-content-center gap-3">
-                    <div class="d-flex flex-column align-items-center">
-                        {% if authed() %}
-                            <a href="{{ url_for('challenges.listing') }}" class="btn btn-pokemon-yellow" style="min-width: 200px;">
-                                <i class="fas fa-flag me-2"></i> Enter Arena
-                            </a>
-                        {% else %}
-                            <a href="{{ url_for('auth.register') }}" class="btn btn-pokemon-yellow" style="min-width: 200px;">
-                                <i class="fas fa-flag me-2"></i> Enter Arena
-                            </a>
-                        {% endif %}
-                        <img src="{{ url_for('views.themes', path='img/Pikachu_hi_transparent.png') }}" alt="Pikachu" class="pikachu-image">
-                    </div>
+                <div class="d-flex justify-content-center mb-4">
+                    {% if authed() %}
+                        <a href="{{ url_for('challenges.listing') }}" class="btn btn-pokemon-yellow">
+                            <i class="fas fa-flag me-2"></i> Enter Arena
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-pokemon-yellow">
+                            <i class="fas fa-flag me-2"></i> Enter Arena
+                        </a>
+                    {% endif %}
+                </div>
+                
+                <div class="d-flex justify-content-center">
+                    <img src="{{ url_for('views.themes', path='img/Pikachu_hi_transparent.png') }}" alt="Pikachu" class="pikachu-image">
                 </div>
             </div>
         </div>

@@ -3,86 +3,225 @@
 {% block stylesheets %}
   {{ super() }}
   <style>
+    @font-face {
+      font-family: 'PokemonSolid';
+      src: url('/themes/core-beta/static/webfonts/PokemonSolidNormal.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+    body {
+      background-color: #000;
+    }
+    
     .users-container {
       padding-top: 3rem;
       padding-bottom: 3rem;
     }
+    
     .users-title {
-      color: #ffcc00;
-      text-shadow: 3px 3px 0 #2c6cb3, -1px -1px 0 #2c6cb3, 1px -1px 0 #2c6cb3, -1px 1px 0 #2c6cb3, 1px 1px 0 #2c6cb3;
+      font-family: 'PokemonSolid', Arial, sans-serif;
+      color: #9e7f56;
+      text-shadow: 3px 3px 0 #02203a, -1px -1px 0 #02203a, 1px -1px 0 #02203a, -1px 1px 0 #02203a, 1px 1px 0 #02203a, 2px 2px 4px rgba(0, 0, 0, 0.8);
       text-align: center;
       margin-bottom: 2rem;
       font-size: 2.5rem;
-      font-weight: bold;
+      font-weight: normal;
+      text-transform: uppercase;
     }
+    
     .ash-image {
       max-width: 100%;
       height: auto;
       border-radius: 15px;
-      border: 4px solid #ffcc00;
+      border: 4px solid #9e7f56;
+      max-height: 300px;
+      object-fit: cover;
     }
+    
     .search-form .form-select,
     .search-form .form-control {
-      background-color: rgba(255, 255, 255, 0.9);
-      border: 3px solid #ffcc00;
-      border-radius: 8px;
-      color: #2c6cb3;
-      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.9) !important;
+      border: 3px solid #333333 !important;
+      border-radius: 8px !important;
+      color: #03213b !important;
+      font-weight: bold !important;
+      font-family: 'PokemonSolid', Arial, sans-serif;
+      text-transform: uppercase;
     }
+    
     .search-form .form-select:focus,
     .search-form .form-control:focus {
-      background-color: white;
-      border-color: #ffcc00;
-      box-shadow: 0 0 0 0.25rem rgba(255, 204, 0, 0.25);
+      background-color: white !important;
+      border-color: #04223c !important;
+      box-shadow: 0 0 0 0.25rem rgba(4, 34, 60, 0.25) !important;
     }
+    
     .btn-pokemon-yellow {
-      background-color: #ffcc00;
-      color: #2c6cb3;
-      border: 3px solid #2c6cb3;
-      padding: 0.5rem 1rem;
+      font-family: 'PokemonSolid', Arial, sans-serif;
+      background-color: #9e7f56;
+      color: #03213b;
+      border: 3px solid #333333;
+      padding: 0.8rem 1.5rem;
       font-size: 1.2rem;
       border-radius: 30px;
-      font-weight: bold;
+      font-weight: normal;
       text-transform: uppercase;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 0 #d4a900;
+      box-shadow: 0 4px 0 #02203a;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
     }
+    
     .btn-pokemon-yellow:hover {
-      background-color: #ffd633;
-      color: #ff0000;
+      background-color: #b8936b;
+      color: #041f3a;
       transform: translateY(-2px);
-      box-shadow: 0 6px 0 #d4a900;
+      box-shadow: 0 6px 0 #02203a;
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);
     }
+    
     .table-themed {
-      background-color: rgba(44, 108, 179, 0.95);
-      color: #fff;
-      border: 4px solid #ffcc00;
+      background-color: rgba(4, 34, 60, 0.9) !important;
+      color: #9e7f56 !important;
+      border: 4px solid #9e7f56;
       border-radius: 15px;
     }
+    
     .table-themed thead th {
-      color: #ffcc00;
-      border-bottom: 2px solid #ffcc00;
+      background-color: #9e7f56 !important;
+      color: #ffffff !important;
+      font-family: 'PokemonSolid', Arial, sans-serif;
+      text-transform: uppercase;
+      border-bottom: 2px solid #9e7f56;
+      border: none !important;
     }
+    
     .table-themed tbody tr {
-      border-color: #ffcc00;
+      background-color: rgba(3, 33, 59, 0.8) !important;
+      border-color: #9e7f56;
     }
+    
     .table-themed tbody tr:hover {
-      background-color: rgba(60, 120, 190, 0.95);
+      background-color: rgba(158, 127, 86, 0.2) !important;
     }
+    
+    .table-themed tbody td {
+      color: #9e7f56 !important;
+      border: 1px solid #9e7f56 !important;
+    }
+    
     .table-themed a {
-      color: #ffcc00;
+      color: #9e7f56 !important;
       font-weight: bold;
     }
+    
     .table-themed a:hover {
-      color: #fff;
+      color: #b8936b !important;
+      text-decoration: underline;
     }
+    
     .table-themed .badge.bg-secondary {
-        background-color: #1a3a5f !important;
-        color: #ffcc00;
+      background-color: #333333 !important;
+      color: #9e7f56 !important;
+      font-family: 'PokemonSolid', Arial, sans-serif;
+      text-transform: uppercase;
     }
+    
     .table-themed .badge.bg-primary {
-        background-color: #ffcc00 !important;
-        color: #2c6cb3;
+      background-color: #9e7f56 !important;
+      color: #ffffff !important;
+      font-family: 'PokemonSolid', Arial, sans-serif;
+      text-transform: uppercase;
+    }
+    
+    .text-muted {
+      color: #9e7f56 !important;
+      font-family: 'PokemonSolid', Arial, sans-serif;
+      text-transform: uppercase;
+    }
+    
+    hr {
+      border-color: #9e7f56 !important;
+      border-width: 2px !important;
+    }
+    
+    .page-select {
+      background-color: #04223c;
+      color: #9e7f56;
+      border: 2px solid #9e7f56;
+      border-radius: 5px;
+      padding: 5px;
+      font-family: 'PokemonSolid', Arial, sans-serif;
+    }
+    
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+      .users-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+      
+      .users-title {
+        font-size: 2rem;
+      }
+      
+      .ash-image {
+        max-height: 200px;
+        margin-bottom: 2rem !important;
+      }
+      
+      .search-form .form-select,
+      .search-form .form-control {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .btn-pokemon-yellow {
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+      }
+      
+      .table-themed {
+        font-size: 0.9rem;
+      }
+      
+      .table-themed thead th {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+      }
+      
+      .table-themed tbody td {
+        padding: 0.5rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .users-title {
+        font-size: 1.8rem;
+      }
+      
+      .ash-image {
+        max-height: 150px;
+      }
+      
+      .search-form .form-select,
+      .search-form .form-control {
+        font-size: 0.8rem;
+      }
+      
+      .btn-pokemon-yellow {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .table-themed {
+        font-size: 0.8rem;
+      }
+      
+      .table-themed thead th,
+      .table-themed tbody td {
+        padding: 0.3rem;
+      }
     }
   </style>
 {% endblock %}
