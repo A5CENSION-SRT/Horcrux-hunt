@@ -13,8 +13,8 @@
 
     /* CSS Variables for Theming */
     :root {
-      --pokemon-yellow: #ffcc00;
-      --pokemon-blue: #2c6cb3;
+      --pokemon-yellow: #9e7f56;
+      --pokemon-blue: #03213b;
       --pokemon-text-primary: #9e7f56;
       --pokemon-text-secondary: #b8936b;
       --pokemon-surface: #03213b;
@@ -65,8 +65,8 @@
     }
 
     .jumbotron h1 {
-      color: var(--pokemon-yellow);
-      text-shadow: 2px 2px 4px var(--pokemon-blue);
+      color: var(--pokemon-text-primary);
+      text-shadow: 2px 2px 4px var(--pokemon-surface-alt);
       font-weight: bold;
     }
 
@@ -85,15 +85,15 @@
     }
 
     .themed-container .h2 {
-      color: var(--pokemon-yellow);
-      text-shadow: 2px 2px 4px var(--pokemon-blue);
+      color: var(--pokemon-text-primary);
+      text-shadow: 2px 2px 4px var(--pokemon-surface-alt);
       font-weight: bold;
     }
 
     /* Buttons */
     .btn-primary {
-        background-color: var(--pokemon-yellow);
-        border-color: var(--pokemon-blue);
+        background-color: var(--pokemon-text-primary);
+        border-color: #333333;
         color: var(--pokemon-blue);
         font-family: 'PokemonSolid', Arial, sans-serif;
         text-transform: uppercase;
@@ -104,11 +104,11 @@
     }
     
     .btn-primary:hover {
-        background-color: var(--pokemon-blue);
-        border-color: var(--pokemon-yellow);
-        color: var(--pokemon-yellow);
+        background-color: var(--pokemon-text-secondary);
+        border-color: #333333;
+        color: var(--pokemon-blue);
         transform: translateY(-2px) scale(1.05);
-        box-shadow: 0 5px 15px rgba(255, 204, 0, 0.2);
+        box-shadow: 0 5px 15px rgba(158, 127, 86, 0.4);
     }
     
     .btn-secondary { /* Kept from first style block for consistency */
@@ -134,8 +134,8 @@
     /* This button style was also in the second block */
     .btn-outline-info {
       background-color: transparent;
-      border-color: var(--pokemon-yellow);
-      color: var(--pokemon-yellow);
+      border-color: var(--pokemon-text-primary);
+      color: var(--pokemon-text-primary);
       font-family: 'PokemonSolid', Arial, sans-serif;
       text-transform: uppercase;
       padding: 12px 30px;
@@ -145,8 +145,8 @@
     }
 
     .btn-outline-info:hover {
-      background-color: var(--pokemon-yellow);
-      border-color: var(--pokemon-yellow);
+      background-color: var(--pokemon-text-primary);
+      border-color: var(--pokemon-text-primary);
       color: var(--pokemon-blue);
       transform: scale(1.05);
     }
@@ -184,7 +184,7 @@
                   <a class="btn btn-primary w-100" href="{{ url_for('auth.oauth_login') }}">{% trans %}Play with Official Team{% endtrans %}</a>
                 </div>
               </div>
-              <hr style="border-top: 1px solid var(--pokemon-yellow);">
+              <hr style="border-top: 1px solid var(--pokemon-text-primary);">
               <p>{% trans %}Or play with an unofficial team:{% endtrans %}</p>
               <div class="row justify-content-center mt-3">
                 <div class="col-md-5">
