@@ -11,212 +11,345 @@
     }
     
     body {
-        background: #000000;
-        color: #9e7f56;
+        background-color: #000;
     }
     
-    .container {
-        background: #03213b;
-        border-radius: 10px;
-        padding: 2rem;
-        margin-top: 2rem;
-        border: 2px solid #9e7f56;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    .new-team-hero {
+        background: url('{{ url_for("views.themes", path="img/Banner.png") }}') no-repeat center bottom fixed;
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 15px;
+        background-position-y: bottom;
+    }
+
+    .new-team-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(4, 31, 58, 0.3);
+        z-index: 1;
     }
     
-    h1, h2, h3, h4, h5, h6 {
+    .new-team-container {
+        background: rgba(3, 33, 59, 0.95);
+        border-radius: 15px;
+        padding: 2rem 3rem;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+        border: 4px solid #333333;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .new-team-title {
         font-family: 'PokemonSolid', Arial, sans-serif;
         color: #9e7f56;
+        text-shadow: 3px 3px 0 #02203a, -1px -1px 0 #02203a, 1px -1px 0 #02203a, -1px 1px 0 #02203a, 1px 1px 0 #02203a, 2px 2px 4px rgba(0, 0, 0, 0.8);
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        font-weight: normal;
         text-transform: uppercase;
-        text-shadow: 2px 2px 0px #02203a;
     }
     
-    .form-control {
-        background-color: #02203a;
-        border: 2px solid #9e7f56;
+    .form-label {
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        font-weight: normal;
         color: #9e7f56;
-        border-radius: 8px;
+        font-size: 1.1rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form-control, 
+    .form-control:focus, 
+    .form-control:active,
+    .form-control:focus-visible {
+        background-color: rgba(255, 255, 255, 0.9) !important;
+        border: 3px solid #333333 !important;
+        border-radius: 8px !important;
+        color: #03213b !important;
+        font-weight: bold !important;
+        box-shadow: none !important;
         padding: 12px 15px;
         font-size: 16px;
         transition: all 0.3s ease;
     }
     
     .form-control:focus {
-        background-color: #041f3a;
-        border-color: #9e7f56;
-        color: #9e7f56;
-        box-shadow: 0 0 10px rgba(158, 127, 86, 0.3);
+        background-color: white !important;
+        border-color: #04223c !important;
+        box-shadow: 0 0 0 0.25rem rgba(4, 34, 60, 0.25) !important;
     }
     
     .form-control::placeholder {
         color: #7a6442;
     }
     
-    .btn-primary {
-        background-color: #9e7f56;
-        border-color: #9e7f56;
-        color: #03213b;
-        font-family: 'PokemonSolid', Arial, sans-serif;
-        text-transform: uppercase;
-        padding: 12px 30px;
-        border-radius: 25px;
-        font-weight: bold;
-        transition: all 0.3s ease;
-    }
-    
-    .btn-primary:hover {
-        background-color: #b8936b;
-        border-color: #b8936b;
-        color: #03213b;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(158, 127, 86, 0.4);
-    }
-    
-    .form-label {
-        color: #9e7f56;
-        font-weight: bold;
-        margin-bottom: 8px;
-    }
-    
     .form-text {
-        color: #b8936b;
-    }
-    
-    @keyframes zoomIn {
-        from { transform: scale(1); }
-        to { transform: scale(1.1); }
-    }
-    
-    .background-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        overflow: hidden;
-    }
-    
-    .background-image {
-        width: 100%;
-        height: 100%;
-        background: url('{{ url_for("views.themes", path="img/Banner.png") }}') no-repeat center bottom;
-        background-size: cover;
-        opacity: 0.2;
-    }
-    
-    .content-wrapper {
-        position: relative;
-        z-index: 1;
-    }
-    
-    .jumbotron {
-        background: linear-gradient(145deg, #03213b 0%, #02203a 100%);
-        color: #9e7f56;
-        padding: 3rem 1rem;
-        border-bottom: 5px solid #9e7f56;
-        margin-bottom: 3rem;
-        text-align: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    }
-    
-    .jumbotron h1 {
         font-family: 'PokemonSolid', Arial, sans-serif;
+        font-size: 0.9rem;
+        color: #9e7f56 !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        text-transform: uppercase;
+        margin-top: 0.5rem;
+    }
+    
+    .team-info {
         color: #9e7f56;
-        font-size: 3.5rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        text-align: center;
+    }
+    
+    .btn-pokemon-submit {
+        font-family: 'PokemonSolid', Arial, sans-serif;
+        background-color: #9e7f56;
+        color: #03213b;
+        border: 3px solid #333333;
+        padding: 0.8rem 2rem;
+        font-size: 1.2rem;
+        border-radius: 30px;
         font-weight: normal;
         text-transform: uppercase;
-        text-shadow: 3px 3px 0px #02203a, 2px 2px 4px rgba(0, 0, 0, 0.8);
-    }
-    
-    .themed-container {
-        background-color: rgba(3, 33, 59, 0.8);
-        border: 2px solid #9e7f56;
-        border-radius: 15px;
-        padding: 2rem;
-    }
-    
-    .themed-container p {
-        color: #9e7f56;
-        line-height: 1.6;
-    }
-    
-    .btn-success {
-        background-color: #9e7f56;
-        border-color: #9e7f56;
-        color: #03213b;
-        font-family: 'PokemonSolid', Arial, sans-serif;
-        text-transform: uppercase;
-        font-weight: bold;
-        padding: 12px 30px;
-        border-radius: 25px;
         transition: all 0.3s ease;
+        box-shadow: 0 4px 0 #02203a;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        width: 100%;
     }
     
-    .btn-success:hover {
+    .btn-pokemon-submit:hover {
         background-color: #b8936b;
-        border-color: #b8936b;
         color: #03213b;
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(158, 127, 86, 0.4);
+        box-shadow: 0 6px 0 #02203a;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Link styling to match theme */
+    a {
+        color: #ffcc00;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: #b8936b;
+        text-decoration: underline;
+    }
+
+    .text-muted {
+        color: #9e7f56 !important;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 992px) {
+        .new-team-hero {
+            padding: 30px 20px;
+        }
+        
+        .new-team-container {
+            padding: 2.5rem 2rem;
+            margin: 1rem;
+        }
+        
+        .new-team-title {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .new-team-hero {
+            padding: 20px 15px;
+            min-height: auto;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        
+        .new-team-container {
+            padding: 2rem 1.5rem;
+            margin: 1rem;
+            border-radius: 12px;
+            border-width: 3px;
+        }
+        
+        .new-team-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .form-label {
+            font-size: 1rem;
+        }
+        
+        .btn-pokemon-submit {
+            padding: 0.7rem 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .team-info {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control {
+            padding: 10px 12px;
+            font-size: 15px;
+            border-width: 2px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .new-team-hero {
+            padding: 15px 10px;
+        }
+        
+        .new-team-container {
+            padding: 1.5rem 1rem;
+            margin: 0.5rem;
+            border-radius: 10px;
+            border-width: 2px;
+        }
+        
+        .new-team-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-label {
+            font-size: 0.9rem;
+        }
+        
+        .btn-pokemon-submit {
+            padding: 0.6rem 1rem;
+            font-size: 1rem;
+            border-radius: 25px;
+        }
+        
+        .form-control {
+            padding: 10px 12px;
+            font-size: 14px;
+            border-width: 2px;
+        }
+        
+        .team-info {
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .new-team-hero {
+            padding: 10px 5px;
+        }
+        
+        .new-team-container {
+            padding: 1rem 0.75rem;
+            margin: 0.25rem;
+            border-radius: 8px;
+        }
+        
+        .new-team-title {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .form-label {
+            font-size: 0.8rem;
+        }
+        
+        .btn-pokemon-submit {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.9rem;
+            border-radius: 20px;
+        }
+        
+        .form-control {
+            padding: 8px 10px;
+            font-size: 13px;
+        }
+        
+        .team-info {
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
+        }
+    }
+        
+        .team-info {
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-text {
+            font-size: 0.8rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .new-team-title {
+            font-size: 1.6rem;
+        }
+        
+        .form-label {
+            font-size: 0.85rem;
+        }
+        
+        .btn-pokemon-submit {
+            padding: 0.5rem 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .team-info {
+            font-size: 0.8rem;
+        }
     }
 </style>
 {% endblock %}
 
 {% block content %}
-  <div class="background-container">
-    <div class="background-image"></div>
-  </div>
-  <div class="content-wrapper">
-  <div class="jumbotron">
-    <div class="container">
-      <h1>{% trans %}Create Team{% endtrans %}</h1>
-    </div>
-  </div>
-  <div class="container-fluid">
-    <div class="row align-items-center">
-      <!-- Charizard on the left -->
-      <div class="col-md-3 d-none d-md-block text-center">
-        <img src="{{ url_for('views.themes', path='img/Charizard.png') }}" alt="Charizard" class="img-fluid" style="max-height: 300px;">
-      </div>
-      
-      <!-- Main content in the center -->
-      <div class="col-md-6">
-        <div class="themed-container">
-          {% include "components/errors.html" %}
+<div class="new-team-hero">
+  <div class="new-team-container">
+    <h1 class="new-team-title">Create Team</h1>
+    
+    {% include "components/errors.html" %}
 
-          {% with form = Forms.teams.TeamRegisterForm() %}
-            {% from "macros/forms.html" import render_extra_fields %}
-            <form method="POST">
-              <div class="mb-3">
-                <b>{{ form.name.label(class="form-label") }}</b>
-                {{ form.name(class="form-control") }}
-              </div>
-              <div class="mb-3">
-                <b>{{ form.password.label(class="form-label") }}</b>
-                {{ form.password(class="form-control") }}
-              </div>
-
-              {{ render_extra_fields(form.extra) }}
-
-              <div class="row ">
-                <div class="col-md-12">
-                  <p>After creating your team, share the team name and password with your teammates so they can join your
-                    team.</p>
-                  {{ form.submit(class="btn btn-success float-end px-4") }}
-                </div>
-              </div>
-              {{ form.nonce() }}
-            </form>
-          {% endwith %}
+    {% with form = Forms.teams.TeamRegisterForm() %}
+      {% from "macros/forms.html" import render_extra_fields %}
+      <form method="POST">
+        <div class="mb-3">
+          <b>{{ form.name.label(class="form-label") }}</b>
+          {{ form.name(class="form-control", placeholder="Enter team name") }}
         </div>
-      </div>
-      
-      <!-- Blastoise on the right -->
-      <div class="col-md-3 d-none d-md-block text-center">
-        <img src="{{ url_for('views.themes', path='img/Blastoise.png') }}" alt="Blastoise" class="img-fluid" style="max-height: 300px;">
-      </div>
-      </div>
-    </div>
+        
+        <div class="mb-3">
+          <b>{{ form.password.label(class="form-label") }}</b>
+          {{ form.password(class="form-control", placeholder="Create team password") }}
+          <small class="form-text" style="color: #ffcc00;">This password will be shared with your teammates</small>
+        </div>
+
+        {{ render_extra_fields(form.extra) }}
+
+        <p class="team-info" style="color: #ffcc00;">After creating your team, share the team name and password with your teammates so they can join your team.</p>
+
+        <div class="row pt-3">
+          <div class="col-12">
+            {{ form.submit(class="btn-pokemon-submit", value="Create Team") }}
+          </div>
+        </div>
+        {{ form.nonce() }}
+      </form>
+    {% endwith %}
   </div>
+</div>
 {% endblock %}

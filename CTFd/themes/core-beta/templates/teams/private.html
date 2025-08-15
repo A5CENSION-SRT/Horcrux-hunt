@@ -113,12 +113,8 @@
         transform: translateY(-2px);
         box-shadow: 0 5px 15px rgba(205, 133, 63, 0.4);
     }
-</style>
-{% endblock %}
 
-{% block stylesheets %}
-  {{ super() }}
-  <style>
+    /* Additional styles from the second block */
     .profile-container {
       padding-top: 3rem;
       padding-bottom: 3rem;
@@ -222,24 +218,10 @@
       border-color: #ffcc00;
       box-shadow: 0 0 0 0.25rem rgba(255, 204, 0, 0.25);
     }
-    .btn-primary {
-      background-color: #ffcc00;
-      border-color: #ffcc00;
-      color: #2c6cb3;
-      font-weight: bold;
-    }
-    .btn-primary:hover {
-      background-color: #e6b800;
-      border-color: #e6b800;
-    }
-    .btn-danger {
-        background-color: #d9534f;
-        border-color: #d43f3a;
-    }
     .btn-close {
         background-color: #ffcc00;
     }
-  </style>
+</style>
 {% endblock %}
 
 {% block content %}
