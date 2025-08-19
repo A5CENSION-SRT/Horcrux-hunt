@@ -142,6 +142,127 @@
         text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);
     }
 
+  /* Responsive tweaks for mobile friendliness */
+  @media (max-width: 992px) {
+    .jumbotron {
+      padding: 2rem 1rem;
+    }
+    .jumbotron h1 {
+      font-size: 2.4rem;
+    }
+    .pokemon-sprite {
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+    @media (max-width: 768px) {
+        /* Stack and flatten navigation for small screens */
+        .nav.flex-column {
+            flex-direction: row !important;
+            gap: 0.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 2rem;
+        }
+        .nav.flex-column .nav-link {
+            margin-bottom: 0 !important;
+            white-space: nowrap;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Improve form spacing and readability */
+        .mb-3 {
+            margin-bottom: 2rem !important;
+        }
+        
+        .form-control, .form-select {
+            font-size: 1.1rem;
+            padding: 0.8rem 1rem;
+            margin-top: 0.5rem;
+            border-radius: 12px;
+        }
+        
+        .form-label {
+            font-size: 1rem !important;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        
+        .btn-primary {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        /* Add breathing room around form sections */
+        hr {
+            margin: 2.5rem 0;
+        }
+
+        /* Reduce splash of decorative sprites so they don't block interactions */
+        .pokemon-sprite { opacity: 0.95; }
+    }
+
+    @media (max-width: 576px) {
+        .jumbotron {
+            padding: 1.5rem 1rem;
+            margin-bottom: 2rem;
+        }
+        .jumbotron h1 {
+            font-size: 1.8rem;
+        }
+
+        /* Hide decorative floating avatars on extra-small screens to avoid tap interference */
+        .pokemon-sprite { display: none !important; }
+
+        /* Make form full width and remove side offsets */
+        .col-md-3, .col-md-8, .offset-md-1 { 
+            flex: 0 0 100%; 
+            max-width: 100%; 
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* Better form spacing on very small screens */
+        .mb-3 {
+            margin-bottom: 2.5rem !important;
+        }
+        
+        .form-control, .form-select {
+            font-size: 1.2rem;
+            padding: 1rem;
+            border-radius: 15px;
+        }
+        
+        .btn-primary {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 25px;
+        }
+
+        /* Allow tables to scroll horizontally */
+        table.table {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Modal dialogs should be near-full width on small screens */
+        .modal-dialog {
+            max-width: 95%;
+            margin: 1.25rem auto;
+        }
+        
+        /* Add container padding */
+        .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+
 </style>
 {% endblock %}
 
@@ -154,34 +275,6 @@
     </div>
 
   </div>
-
-  <div class="container" style="position: relative;">
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 1; pointer-events: none;">
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="pokemon-sprite" style="top: 5%; left: 5%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="p"></a>
-        <a href="https://artofproblemsolving.com/community/c1595181" target="_blank" class="pokemon-sprite" style="top: 15%; left: 90%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="p"></a>
-        <a href="https://docs.google.com/presentation/d/1mCYoEoATJvJ7WIX0fb7eTLYwE6M0r7sQHqDZlG06YVo/present?token=AC4w5Vh3zGFTWL2HPCKvC7_6Jh7TnhRu_A:1604875742839&includes_info_params=1&eisi=COjZvoSE9OwCFQXOOgcd95EAeg#slide=id.ga8c6825146_0_14" target="_blank" class="pokemon-sprite" style="top: 25%; left: 8%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" alt="p"></a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="pokemon-sprite" style="top: 35%; left: 88%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="p"></a>
-        <a href="https://artofproblemsolving.com/community/c1595181" target="_blank" class="pokemon-sprite" style="top: 45%; left: 10%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png" alt="p"></a>
-        <a href="https://docs.google.com/presentation/d/1mCYoEoATJvJ7WIX0fb7eTLYwE6M0r7sQHqDZlG06YVo/present?token=AC4w5Vh3zGFTWL2HPCKvC7_6Jh7TnhRu_A:1604875742839&includes_info_params=1&eisi=COjZvoSE9OwCFQXOOgcd95EAeg#slide=id.ga8c6825146_0_14" target="_blank" class="pokemon-sprite" style="top: 55%; left: 92%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png" alt="p"></a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="pokemon-sprite" style="top: 65%; left: 12%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png" alt="p"></a>
-        <a href="https://artofproblemsolving.com/community/c1595181" target="_blank" class="pokemon-sprite" style="top: 75%; left: 85%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png" alt="p"></a>
-        <a href="https://docs.google.com/presentation/d/1mCYoEoATJvJ7WIX0fb7eTLYwE6M0r7sQHqDZlG06YVo/present?token=AC4w5Vh3zGFTWL2HPCKvC7_6Jh7TnhRu_A:1604875742839&includes_info_params=1&eisi=COjZvoSE9OwCFQXOOgcd95EAeg#slide=id.ga8c6825146_0_14" target="_blank" class="pokemon-sprite" style="top: 85%; left: 14%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="p"></a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="pokemon-sprite" style="top: 95%; left: 87%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png" alt="p"></a>
-        <a href="https://artofproblemsolving.com/community/c1595181" target="_blank" class="pokemon-sprite" style="top: 8%; left: 89%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/384.png" alt="p"></a>
-        <a href="https://docs.google.com/presentation/d/1mCYoEoATJvJ7WIX0fb7eTLYwE6M0r7sQHqDZlG06YVo/present?token=AC4w5Vh3zGFTWL2HPCKvC7_6Jh7TnhRu_A:1604875742839&includes_info_params=1&eisi=COjZvoSE9OwCFQXOOgcd95EAeg#slide=id.ga8c6825146_0_14" target="_blank" class="pokemon-sprite" style="top: 18%; left: 11%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/248.png" alt="p"></a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="pokemon-sprite" style="top: 28%; left: 91%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png" alt="p"></a>
-        <a href="https://artofproblemsolving.com/community/c1595181" target="_blank" class="pokemon-sprite" style="top: 38%; left: 13%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/373.png" alt="p"></a>
-        <a href="https://docs.google.com/presentation/d/1mCYoEoATJvJ7WIX0fb7eTLYwE6M0r7sQHqDZlG06YVo/present?token=AC4w5Vh3zGFTWL2HPCKvC7_6Jh7TnhRu_A:1604875742839&includes_info_params=1&eisi=COjZvoSE9OwCFQXOOgcd95EAeg#slide=id.ga8c6825146_0_14" target="_blank" class="pokemon-sprite" style="top: 48%; left: 86%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png" alt="p"></a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="pokemon-sprite" style="top: 58%; left: 9%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/212.png" alt="p"></a>
-        <a href="https://artofproblemsolving.com/community/c1595181" target="_blank" class="pokemon-sprite" style="top: 68%; left: 88%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/249.png" alt="p"></a>
-        <a href="https://docs.google.com/presentation/d/1mCYoEoATJvJ7WIX0fb7eTLYwE6M0r7sQHqDZlG06YVo/present?token=AC4w5Vh3zGFTWL2HPCKvC7_6Jh7TnhRu_A:1604875742839&includes_info_params=1&eisi=COjZvoSE9OwCFQXOOgcd95EAeg#slide=id.ga8c6825146_0_14" target="_blank" class="pokemon-sprite" style="top: 78%; left: 11%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/376.png" alt="p"></a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="pokemon-sprite" style="top: 88%; left: 90%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/445.png" alt="p"></a>
-        <a href="https://artofproblemsolving.com/community/c1595181" target="_blank" class="pokemon-sprite" style="top: 2%; left: 93%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png" alt="p"></a>
-        <a href="https://docs.google.com/presentation/d/1mCYoEoATJvJ7WIX0fb7eTLYwE6M0r7sQHqDZlG06YVo/present?token=AC4w5Vh3zGFTWL2HPCKvC7_6Jh7TnhRu_A:1604875742839&includes_info_params=1&eisi=COjZvoSE9OwCFQXOOgcd95EAeg#slide=id.ga8c6825146_0_14" target="_blank" class="pokemon-sprite" style="top: 12%; left: 6%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/257.png" alt="p"></a>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="pokemon-sprite" style="top: 22%; left: 87%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/389.png" alt="p"></a>
-        <a href="https://artofproblemsolving.com/community/c1595181" target="_blank" class="pokemon-sprite" style="top: 32%; left: 14%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/483.png" alt="p"></a>
-        <a href="https://docs.google.com/presentation/d/1mCYoEoATJvJ7WIX0fb7eTLYwE6M0r7sQHqDZlG06YVo/present?token=AC4w5Vh3zGFTWL2HPCKvC7_6Jh7TnhRu_A:1604875742839&includes_info_params=1&eisi=COjZvoSE9OwCFQXOOgcd95EAeg#slide=id.ga8c6825146_0_14" target="_blank" class="pokemon-sprite" style="top: 42%; left: 94%;"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/484.png" alt="p"></a>
-    </div>
     <div class="row">
 
       <div class="col-md-3 offset-md-1 mb-3 mb-md-0">
@@ -291,7 +384,9 @@
               </form>
             {% endwith %}
           </div>
-
+          <div style="margin-top: 12000px; background: transparent; height: 1px; width: 100%;">
+            <p> the flag is Horcrux{ddddd}</p>
+          </div>
           <div class="tab-pane fade" id="tokens" role="tabpanel">
 
             {% with form = Forms.self.TokensForm() %}
