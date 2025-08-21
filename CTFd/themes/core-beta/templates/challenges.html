@@ -274,6 +274,12 @@
             padding-top: 2rem !important;
         }
     }
+
+    .hp-character-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+    }
   </style>
 {% endblock %}
 
@@ -318,8 +324,18 @@
                                     <div class="challenge-inner">
                                         <h4 class="challenge-card-title" x-text="c.name"></h4>
                                         <p class="challenge-card-cp">CP <span x-text="c.value"></span></p>
-                                        <div x-data="{ pokemonId: Math.floor(Math.random() * 898) + 1 }" class="pokemon-sprite-container">
-                                            <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`" alt="Random Pokémon" class="pokemon-sprite">
+                                        <div x-data="{ 
+                                            characters: [
+                                                { src: '/themes/core-beta/static/img/Ash.png', alt: 'Harry Potter' },
+                                                { src: '/themes/core-beta/static/img/Charizard.png', alt: 'Dragon Character' },
+                                                { src: '/themes/core-beta/static/img/Blastoise.png', alt: 'Hagrid Character' },
+                                                { src: '/themes/core-beta/static/img/Pikachu_hi_transparent.png', alt: 'Dobby Character' },
+                                                { src: '/themes/core-beta/static/img/Dum.png', alt: 'Dumn' }
+
+                                            ],
+                                            selectedCharacter: null
+                                        }" x-init="selectedCharacter = characters[Math.floor(Math.random() * characters.length)]" class="pokemon-sprite-container">
+                                            <img :src="selectedCharacter.src" :alt="selectedCharacter.alt" class="pokemon-sprite">
                                         </div>
                                     </div>
                                     <div x-show="c.solved_by_me" class="solved-overlay">
@@ -333,6 +349,18 @@
                 </div>
             </template>
         </div>
+    </div>
+
+    <div x-data="{ 
+    characters: [
+        { src: '/themes/core-beta/static/img/Ash.png', alt: 'Harry Potter' },
+        { src: '/themes/core-beta/static/img/Charizard.png', alt: 'Dragon Character' },
+        { src: '/themes/core-beta/static/img/Blastoise.png', alt: 'Hagrid Character' },
+        { src: '/themes/core-beta/static/img/Pikachu_hi_transparent.png', alt: 'Dobby Character' }
+    ],
+    selectedCharacter: null
+}" x-init="selectedCharacter = characters[Math.floor(Math.random() * characters.length)]" class="hp-character-container">
+        <img :src="selectedCharacter.src" :alt="selectedCharacter.alt" class="pokemon-sprite">
     </div>
 </div>
 {% endblock %}
