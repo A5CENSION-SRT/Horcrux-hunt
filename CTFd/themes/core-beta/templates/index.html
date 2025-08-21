@@ -26,6 +26,15 @@
             position: relative;
         }
         
+        /* Mobile banner override */
+        @media (max-width: 768px) {
+            .index-hero {
+                background: url('{{ url_for("views.themes", path="img/BannerMobile.png") }}') no-repeat center top fixed;
+                background-size: cover;
+                background-position: center;
+            }
+        }
+        
         .index-hero::before {
             content: '';
             position: absolute;
