@@ -1,5 +1,59 @@
+<style>
+    /* Top positioned toast styling */
+    .toast {
+        background: linear-gradient(135deg, #03213b 0%, #02203a 100%) !important;
+        border: 2px solid #9a7133 !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6) !important;
+        border-radius: 10px !important;
+        max-width: 400px !important;
+    }
+    
+    .toast-header {
+        background: rgba(154, 113, 51, 0.9) !important;
+        color: #03213b !important;
+        font-family: 'PokemonSolid', Arial, sans-serif !important;
+        text-transform: uppercase !important;
+        border-bottom: 1px solid #03213b !important;
+        font-size: 0.9rem !important;
+        font-weight: normal !important;
+    }
+    
+    .toast-body {
+        color: #9a7133 !important;
+        font-size: 1rem !important;
+        font-weight: 500 !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    .toast .btn-close {
+        filter: brightness(0) invert(1) !important;
+    }
+    
+    /* Ensure toast appears above everything */
+    .position-fixed.top-0 {
+        z-index: 9999 !important;
+        margin-top: 60px; /* Account for navbar */
+    }
+    
+    /* Animation for top toast */
+    @keyframes slideInFromTop {
+        0% {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    .toast.show {
+        animation: slideInFromTop 0.5s ease-out !important;
+    }
+</style>
+
 <div x-data>
-  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
     <div x-ref="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <strong class="me-auto" x-text="$store.toast.title"></strong>
