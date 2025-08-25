@@ -13,6 +13,7 @@
     :root {
         --pokemon-bronze: #9e7f56;
         --pokemon-blue: #03213b;
+        --pokemon-yellow: #ffd733;
         --card-bg: rgba(3, 33, 59, 0.95);
         --card-border: #333333;
         --card-shadow: rgba(0, 0, 0, 0.3);
@@ -64,7 +65,7 @@
     }
 
     .oak-message-card .card-title {
-        font-family: 'Pokemon Solid', sans-serif;
+        font-family: 'PokemonSolid', sans-serif;
         color: var(--pokemon-yellow);
         font-size: 1.8rem;
         border-bottom: 2px solid var(--pokemon-blue);
@@ -109,6 +110,11 @@
     </div>
 </div>
 <div class="container">
+    <!-- Debug info - remove after testing -->
+    <div class="alert alert-info mb-3" style="background-color: var(--card-bg); border: 1px solid var(--pokemon-yellow); color: var(--text-primary);">
+        <small>Debug: {{ notifications | length }} notifications found</small>
+    </div>
+    
     {% if not notifications %}
     <div class="text-center py-5">
         <h2 class="pokemon-font" style="color: var(--pokemon-yellow);">No new messages!</h2>
@@ -133,5 +139,26 @@
 
 {% block scripts %}
   {{ Assets.js("assets/js/notifications.js") }}
+  <script>
+    // Fallback date formatting if notifications.js doesn't exist or fails
+    document.addEventListener('DOMContentLoaded', function() {
+        const timeElements = document.querySelectorAll('[data-time]');
+        timeElements.forEach(function(element) {
+            const isoTime = element.getAttribute('data-time');
+            if (isoTime) {
+                try {
+                    const date = new Date(isoTime);
+                    element.textContent = date.toLocaleString();
+                } catch (e) {
+                    console.warn('Failed to parse date:', isoTime);
+                    element.textContent = isoTime;
+                }
+            }
+        });
+        
+        // Debug console output
+        console.log('Notifications page loaded. Found', timeElements.length, 'time elements');
+    });
+  </script>
 {% endblock %}
 

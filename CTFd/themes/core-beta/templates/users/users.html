@@ -233,11 +233,11 @@
         <img src="{{ url_for('views.themes', path='img/Ash.png') }}" alt="Ash Ketchum" class="ash-image mb-4">
       </div>
       <div class="col-md-8">
-        <h1 class="users-title">{% trans %}Trainers{% endtrans %}</h1>
+        <h1 class="users-title">{% trans %}Chasers{% endtrans %}</h1>
 
         {% if q and field %}
           <h5 class="text-muted text-center" style="color: #ffcc00 !important;">
-            {% trans %}Searching for trainers with <strong>{{ field }}</strong> matching <strong>{{ q }}</strong>{% endtrans %}
+            {% trans %}Searching for Chasers with <strong>{{ field }}</strong> matching <strong>{{ q }}</strong>{% endtrans %}
           </h5>
           <h6 class="text-muted text-center pb-3" style="color: #ffcc00 !important;">
             {% trans page=users.page, total=users.total %}Page {{ page }} of {{ total }} results{% endtrans %}
